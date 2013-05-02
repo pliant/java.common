@@ -1,0 +1,17 @@
+# The time, in milliseconds, that a database process will be delayed when it has to be retried.
+camel.database.retry.delay=5000
+
+# The time, in milliseconds, that a service call process will be delayed when it has to be retried.
+camel.service.retry.delay=5000
+
+# The time, in milliseconds, that a message queue push/pull process will be delayed when it has to be retried.
+camel.queue.retry.delay=5000
+
+# The URI used to connect to an email account in order to send error notifications. See http://camel.apache.org/mail.html
+support.error.email.uri=smtp://mailhost.musc.edu:25?from=noreply@musc.edu&to=test@musc.edu&subject=Test Error
+
+# The URI used to connect to an email account in order to send retry notifications. See http://camel.apache.org/mail.html
+support.retry.email.uri=smtp://mailhost.musc.edu:25?from=noreply@musc.edu&to=test@musc.edu&subject=Test Retry
+
+# The URI used to connect to an email account in order to send generic notifications. See http://camel.apache.org/mail.html
+support.email.uri=smtp://mailhost.musc.edu:25?from=noreply@musc.edu&to=test@musc.edu&subject=Test Generic

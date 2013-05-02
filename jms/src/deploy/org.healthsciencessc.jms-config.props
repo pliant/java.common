@@ -1,0 +1,8 @@
+activemq.client.id.prefix=MakeMeUnique
+activemq.broker.url=activemq.broker.url=vm://localhost:61616
+#activemq.broker.url=failover:(tcp://hsscmsgprod1.clemson.edu:61616,tcp://hsscmsgprod2.clemson.edu:61616,tcp://hsscmsgprod3.clemson.edu:61616)?randomize=false
+activemq.username=
+activemq.password=
+activemq.pool.max.connections=20
+activemq.pool.max.sessions.per=20
+activemq.transacted=true

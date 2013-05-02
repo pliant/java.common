@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns3:ConsentEncounter xmlns:ns2="http://www.healthsciencessc.org/common" 
+	xmlns:ns3="http://www.healthsciencessc.org/consent" 
+	xmlns:ns4="http://www.healthsciencessc.org/labs" 
+	xmlns:ns5="http://www.healthsciencessc.org/patient" id="900001017">
+    <ns2:Identity id="900000101">
+        <Authority>PATCOM.MUSC</Authority>
+        <Type>MRN</Type>
+    </ns2:Identity>
+    <EncounterDate>2011-01-01T00:00:00.000-05:00</EncounterDate>
+    <ns3:ConsentCollection id="3f2b49e3-60da-479f-97a1-d4af341d892c">
+        <ns3:CollectionType id="lewis-blackman"/>
+        <CreateDate>2011-11-16T11:16:54.587-05:00</CreateDate>
+    </ns3:ConsentCollection>
+    <ns3:ConsentCollection id="e935caaa-e102-4eed-ac49-abf0f12fe0a3">
+        <ns3:Consent>
+            <ConsentType>RPc0013</ConsentType>
+            <Granted>true</Granted>
+            <ConsentDate>2011-11-16T11:16:54.587-05:00</ConsentDate>
+        </ns3:Consent>
+        <ns3:Consent>
+            <ConsentType>RPc0018</ConsentType>
+            <Granted>true</Granted>
+            <ConsentDate>2011-11-16T11:16:54.587-05:00</ConsentDate>
+        </ns3:Consent>
+        <ns3:CollectionType id="consent-for-treatment"/>
+        <CreateDate>2011-11-16T11:16:54.587-05:00</CreateDate>
+    </ns3:ConsentCollection>
+</ns3:ConsentEncounter>

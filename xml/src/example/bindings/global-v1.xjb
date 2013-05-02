@@ -1,0 +1,72 @@
+<jaxb:bindings 
+	xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/jaxb http://java.sun.com/xml/ns/jaxb "
+	schemaLocation="global-v1.xsd" node="/xsd:schema" 
+	version="2.0">
+	
+	<!-- 
+		Purpose: Set The JAXB Generator To Use ArrayLists For Collections 
+			And JodaTime For Any Date/Time DataType. 
+		NOTE: If generating from more than one schema, globals should only be defined 
+			in one of the XJB files.
+	-->
+	<jaxb:globalBindings collectionType="java.util.ArrayList">
+		<jaxb:javaType name="org.joda.time.DateMidnight" xmlType="xsd:date" 
+			parseMethod="code.pliant.common.xml.bind.DateMidnightAdapter.parseDateMidnight" 
+			printMethod="code.pliant.common.xml.bind.DateMidnightAdapter.printDateMidnight"/>
+		
+		<jaxb:javaType name="org.joda.time.LocalTime" xmlType="xsd:time" 
+			parseMethod="code.pliant.common.xml.bind.LocalTimeAdapter.parseLocalTime" 
+			printMethod="code.pliant.common.xml.bind.LocalTimeAdapter.printLocalTime"/>
+		
+		<jaxb:javaType name="org.joda.time.DateTime" xmlType="xsd:dateTime" 
+			parseMethod="code.pliant.common.xml.bind.DateTimeAdapter.parseDateTime" 
+			printMethod="code.pliant.common.xml.bind.DateTimeAdapter.printDateTime"/>
+		
+		<jaxb:javaType name="java.util.Locale" xmlType="xsd:language" 
+			parseMethod="code.pliant.common.xml.bind.JAXBHelper.parseLocale" 
+			printMethod="code.pliant.common.xml.bind.JAXBHelper.printLocale"/>
+		
+		<jaxb:javaType name="java.lang.Boolean" xmlType="xsd:boolean" 
+			parseMethod="javax.xml.bind.DatatypeConverter.parseBoolean" 
+			printMethod="javax.xml.bind.DatatypeConverter.printBoolean"/>
+		
+		<jaxb:javaType name="java.lang.Byte" xmlType="xsd:byte" 
+			parseMethod="javax.xml.bind.DatatypeConverter.parseByte" 
+			printMethod="javax.xml.bind.DatatypeConverter.printByte"/>
+		
+		<jaxb:javaType name="java.lang.Short" xmlType="xsd:short" 
+			parseMethod="javax.xml.bind.DatatypeConverter.parseShort" 
+			printMethod="javax.xml.bind.DatatypeConverter.printShort"/>
+		
+		<jaxb:javaType name="java.lang.Integer" xmlType="xsd:integer" 
+			parseMethod="javax.xml.bind.DatatypeConverter.parseInt" 
+			printMethod="javax.xml.bind.DatatypeConverter.printInt"/>
+		
+		<jaxb:javaType name="java.lang.Long" xmlType="xsd:long" 
+			parseMethod="javax.xml.bind.DatatypeConverter.parseLong" 
+			printMethod="javax.xml.bind.DatatypeConverter.printLong"/>
+		
+		<jaxb:javaType name="java.lang.Float" xmlType="xsd:float" 
+			parseMethod="javax.xml.bind.DatatypeConverter.parseFloat" 
+			printMethod="javax.xml.bind.DatatypeConverter.printFloat"/>
+		
+		<jaxb:javaType name="java.lang.Double" xmlType="xsd:double" 
+			parseMethod="javax.xml.bind.DatatypeConverter.parseDouble" 
+			printMethod="javax.xml.bind.DatatypeConverter.printDouble"/>
+		
+		<jaxb:serializable uid="1" />
+		
+		<!-- Provides a common ancestor. -->
+		<xjc:superClass name="my.application.domain.ValueObject"/>
+	</jaxb:globalBindings>
+	
+	<!-- Set the package to use for classes generated from the schema. -->	
+	<jaxb:schemaBindings >
+		<jaxb:package name="my.application.domain"/>
+	</jaxb:schemaBindings>
+
+</jaxb:bindings>

@@ -1,0 +1,8 @@
+activemq.client.id.prefix=work-test
+#activemq.broker.url=tcp://hsscappdev2.mdc.musc.edu:61616
+activemq.broker.url=vm://localhost:61616?broker.persistent=false
+activemq.username=
+activemq.password=
+activemq.pool.max.connections=20
+activemq.pool.max.sessions.per=20
+activemq.transacted=true
