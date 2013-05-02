@@ -10,9 +10,7 @@
 		<version>0.1.0-SNAPSHOT</version>
 	</parent>
 	
-	<groupId>code.pliant.common</groupId>
 	<artifactId>jms</artifactId>
-	<version>0.1.0-SNAPSHOT</version>
 	
 	<name>Pliant ActiveMQ Project</name>
 	<description>Provides base dependencies and utility classes for using Apache Active in your project.</description>

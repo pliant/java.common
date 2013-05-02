@@ -10,9 +10,7 @@
 		<version>0.1.0-SNAPSHOT</version>
 	</parent>
 	
-	<groupId>code.pliant.common</groupId>
 	<artifactId>core</artifactId>
-	<version>0.1.0-SNAPSHOT</version>
 	
 	<name>Pliant Core Project</name>
 	<description>Provides generalized utilities that are commonly used by most projects/libraries.</description>
