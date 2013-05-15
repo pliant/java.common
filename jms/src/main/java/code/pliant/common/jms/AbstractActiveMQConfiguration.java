@@ -13,8 +13,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 
 
 /**
- * Configuration helper for ActiveMQ connections.
- * 
+ * Abstract implementation to provide configurations for ActiveMQ connections.
  * 
  * @author Daniel Rugg
  */

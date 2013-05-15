@@ -5,9 +5,9 @@ package code.pliant.common.jpa.dao;
 
 
 /**
- * Provides a generic interface for a dao service.
+ * Provides a generic interface for a DAO service.
  * 
- * @author dfr2
+ * @author Daniel Rugg
  */
 public interface DAOService<T> {
 	

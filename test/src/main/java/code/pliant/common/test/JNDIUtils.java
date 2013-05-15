@@ -19,7 +19,7 @@ import org.springframework.mock.jndi.SimpleNamingContextBuilder;
  * 
  * @author Daniel Rugg
  */
-public class JNDIHelper {
+public class JNDIUtils {
 
 	/**
 	 * The default builder
@@ -27,10 +27,12 @@ public class JNDIHelper {
 	private static SimpleNamingContextBuilder builder = null;
 	
 	/**
+	 * Creates and activates a {@link SimpleNamingContextBuilder} if one has not already been created 
+	 * and activated.
 	 * 
-	 * @return
-	 * @throws IllegalStateException
-	 * @throws NamingException
+	 * @return The currently active {@link SimpleNamingContextBuilder}.
+	 * @throws IllegalStateException Thrown out of the {@link SimpleNamingContextBuilder} when things go wrong.
+	 * @throws NamingExceptionThrown out of the {@link SimpleNamingContextBuilder} when things go wrong.
 	 */
 	private static SimpleNamingContextBuilder getBuilder() throws IllegalStateException, NamingException{
 		if(builder == null){
@@ -41,11 +43,13 @@ public class JNDIHelper {
 	}
 	
 	/**
+	 * Registers an instance of an Object on the {@link SimpleNamingContextBuilder} by the name provided in 
+	 * order to allow access to that Object via JNDI.
 	 * 
-	 * @param name
-	 * @param value
-	 * @throws IllegalStateException
-	 * @throws NamingException
+	 * @param name The name to register the instance under.
+	 * @param value The instance to register.
+	 * @throws IllegalStateException Thrown out of the {@link SimpleNamingContextBuilder} when things go wrong.
+	 * @throws NamingExceptionThrown out of the {@link SimpleNamingContextBuilder} when things go wrong.
 	 */
 	public static void register(String name, Object value) throws IllegalStateException, NamingException{
 		SimpleNamingContextBuilder builder = getBuilder();
@@ -53,10 +57,11 @@ public class JNDIHelper {
 	}
 	
 	/**
+	 * Registers a map of name/value pairs with the {@link SimpleNamingContextBuilder}.
 	 * 
-	 * @param map
-	 * @throws IllegalStateException
-	 * @throws NamingException
+	 * @param map The map of name/value pairs to register.
+	 * @throws IllegalStateException Thrown out of the {@link SimpleNamingContextBuilder} when things go wrong.
+	 * @throws NamingExceptionThrown out of the {@link SimpleNamingContextBuilder} when things go wrong.
 	 */
 	public static void register(Map<String, Object> map) throws IllegalStateException, NamingException{
 		SimpleNamingContextBuilder builder = getBuilder();
@@ -68,12 +73,17 @@ public class JNDIHelper {
 		}
 	}
 	
+	/**
+	 * Flag to indicate if a transaction manager has been loaded into the {@link SimpleNamingContextBuilder}.
+	 */
 	private static boolean jtaTransactionManagerLoaded = false;
 	
 	/**
-	 * Registers the TestUserTransaction under the name java:comp/UserTransaction
-	 * @throws NamingException 
-	 * @throws IllegalStateException 
+	 * Registers the {@link PsuedoUserTransaction} under the name java:comp/UserTransaction with the
+	 * {@link SimpleNamingContextBuilder}.
+	 * 
+	 * @throws IllegalStateException Thrown out of the {@link SimpleNamingContextBuilder} when things go wrong.
+	 * @throws NamingExceptionThrown out of the {@link SimpleNamingContextBuilder} when things go wrong.
 	 */
 	public static void registerJTATransactionManager() throws IllegalStateException, NamingException{
 		if(!jtaTransactionManagerLoaded){
@@ -83,19 +93,25 @@ public class JNDIHelper {
 	}
 	
 	/**
-	 * Shuts down the JNDI engine.
+	 * Deactivates and destroys the {@link SimpleNamingContextBuilder}.
 	 */
 	public static void shutdown(){
 		builder.deactivate();
 		builder = null;
 	}
 	
+	/**
+	 * Collection of database DataSources that have been registered.
+	 */
 	private static ArrayList<String> registeredDatabases = new ArrayList<String>();
 	
 	/**
-	 * Used to register a HSQL database.  Simplifies the creation/registration so you only need to provide 
-	 * the name of the database and the JNDI lookup string.
-	 * @param jndiName The JNDI name to register the connection under.
+	 * Used to register an in-memory HSQL database with the {@link SimpleNamingContextBuilder}.  
+	 * Simplifies the creation/registration so you only need to provide the name of the database 
+	 * and the JNDI lookup string.
+	 * 
+	 * @param jndiName The JNDI name to register the connection under, and to access the {@link DataSource} 
+	 * with using JNDI.
 	 * @param dbName The name to give the database.
 	 */
 	public static void registerDatabase(String jndiName, String dbName){
@@ -103,9 +119,12 @@ public class JNDIHelper {
 	}
 	
 	/**
-	 * Used to register a HSQL database.  Simplifies the creation/registration so you only need to provide 
-	 * the name of the database and the JNDI lookup string.
-	 * @param jndiName The JNDI name to register the connection under.
+	 * Used to register an in-memory HSQL database with the {@link SimpleNamingContextBuilder}, creating any 
+	 * number of schemas within that database on registration.  Simplifies the creation/registration so you 
+	 * only need to provide the name of the database and the JNDI lookup string.
+	 * 
+	 * @param jndiName The JNDI name to register the connection under, and to access the {@link DataSource} 
+	 * with using JNDI.
 	 * @param dbName The name to give the database.
 	 * @param schemas Schemas that must be found in the database.  If not found, will be created.
 	 */
@@ -142,20 +161,22 @@ public class JNDIHelper {
 	}
 	
 	/**
-	 * Registers a JDBC driver and connection credentials with a datasource that is made availabe through 
-	 * the test JNDI Naming Context.
-	 * @param jndiName
-	 * @param driverClassName
-	 * @param url
-	 * @param userName
-	 * @param password
+	 * Registers a JDBC driver and connection credentials, wrapping it in a {@link DataSource}, with the 
+	 * {@link SimpleNamingContextBuilder}.
+	 * 
+	 * @param jndiName The JNDI name to register the connection under, and to access the {@link DataSource} 
+	 * with using JNDI.
+	 * @param driverClassName The name of the database driver class.
+	 * @param url The connection URL to connect to the database with.
+	 * @param userName The User ID used to connect to the database.
+	 * @param password The Password used to connect to the database.
 	 */
 	public static void registerDatabase(String jndiName, String driverClassName, String url, String userName, String password){
 		if(!registeredDatabases.contains(jndiName)){
 			DriverManagerDataSource ds = new DriverManagerDataSource(url, userName, password);
 			ds.setDriverClassName(driverClassName);
 			try {
-				JNDIHelper.register(jndiName, ds);
+				JNDIUtils.register(jndiName, ds);
 				registeredDatabases.add(jndiName);
 			}
 			catch (Exception e) {
@@ -168,11 +189,12 @@ public class JNDIHelper {
 	}
 	
 	/**
-	 * Registers An Oracle Database Connection With A JNDI Name
-	 * @param jndiName
-	 * @param url
-	 * @param userName
-	 * @param password
+	 * Registers an Oracle database connection with the {@link SimpleNamingContextBuilder}.
+	 * @param jndiName The JNDI name to register the connection under, and to access the {@link DataSource} 
+	 * with using JNDI.
+	 * @param url The connection URL to connect to the database with.
+	 * @param userName The User ID used to connect to the database.
+	 * @param password The Password used to connect to the database.
 	 */
 	public static void registerOracleDatabase(String jndiName, String url, String userName, String password){
 		final String oracleDriverClassName = "oracle.jdbc.driver.OracleDriver";

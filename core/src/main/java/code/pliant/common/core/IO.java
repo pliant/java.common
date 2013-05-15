@@ -16,7 +16,7 @@ public class IO {
 	
 	/**
 	 * Performs a flush and close on the OutputStream, catching any exceptions thrown.
-	 * @param out
+	 * @param out The OutputStream to close.
 	 */
 	public static void close(OutputStream out){
 		try {
@@ -31,7 +31,7 @@ public class IO {
 	
 	/**
 	 * Performs a close on the InputStream, catching any exceptions thrown.
-	 * @param in
+	 * @param in The InputStream to close.
 	 */
 	public static void close(InputStream in){
 		try {
@@ -42,7 +42,7 @@ public class IO {
 	
 	/**
 	 * Performs a flush and close on the Writer, catching any exceptions thrown.
-	 * @param out
+	 * @param out The Writer to close
 	 */
 	public static void close(Writer out){
 		try {
@@ -57,7 +57,7 @@ public class IO {
 	
 	/**
 	 * Performs a close on the InputStream, catching any exceptions thrown.
-	 * @param in
+	 * @param in The Reader to close.
 	 */
 	public static void close(Reader in){
 		try {
@@ -66,27 +66,29 @@ public class IO {
 		catch (Exception e) {}
 	}
 	
+	/**
+	 * Attempts to convert an InputStream to a String.  If any exception is thrown during this process, {@code null}
+	 * is return.  This will close the stream that is passed once it is done reading from it..
+	 * 
+	 * @param stream The InputStream to convert.
+	 * @return A String or {@code null}
+	 */
 	public static String toStringOrNull(InputStream stream) {
 		StringBuilder answer = new StringBuilder();
 		if (stream != null) {
-			final char[] buffer = new char[0x10000];
-			Reader in = new InputStreamReader(stream);
+			InputStreamReader reader = new InputStreamReader(stream);
+			int len = 1024;
+			char[] buffer = new char[len];
 			try{
-				int read;
-				do {
-					read = in.read(buffer, 0, buffer.length);
-					if (read > 0) {
-						answer.append(buffer, 0, read);
-					}
+				while((len = reader.read(buffer)) >= 0){
+					answer.append(buffer, 0, len);
 				}
-				while (read >= 0);
 			}
 			catch (Exception e) {
-				// We are not letting exceptions escape.
 				return null;
 			}
 			finally{
-				close(in);
+				close(reader);
 			}
 		}
 		return answer.toString();

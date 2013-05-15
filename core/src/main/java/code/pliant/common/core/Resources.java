@@ -2,14 +2,14 @@ package code.pliant.common.core;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.Properties;
 
 
 /**
+ * Helper utility for getting reseources off of the classpath.
+ * 
  * @author Daniel Rugg, OBIS
- *
  */
 public class Resources {
 	
@@ -21,23 +21,22 @@ public class Resources {
 	 * @return A string containing information about the resource that is being inspected, including it's contents.
 	 */
 	public static String inspectResource(Class<?> klass, String resourcePath){
-		StringBuilder output = new StringBuilder();
-		output.append("ResourcePath: ").append(resourcePath).append(Message.NEWLINE);
-		output.append("Class Loader: ").append(klass.getName()).append(Message.NEWLINE);
+		Message message = new Message();
+		message.add("ResourcePath", resourcePath)
+			.add("Class Loader", klass.getName());
 		
 		// Validate URL
 		URL resource = klass.getResource(resourcePath);
-		output.append("Resource URL: ").append(resource).append(Message.NEWLINE);
+		message.add("Resource URL", resource);
 		
 		// Validate Contents
-		output.append("Resource: ");
 		try {
-			output.append(getResourceAsString(klass, resourcePath));
+			message.add("Resource", getResourceAsString(klass, resourcePath));
 		}
 		catch (NotFoundException e) {
-			output.append(e.getMessage());
+			message.add("Resource Exception", e.getMessage());
 		}
-		return output.toString();
+		return message.toString();
 	}
 	
 	/**
@@ -53,25 +52,7 @@ public class Resources {
 		}
 		InputStream stream = klass.getResourceAsStream(resourcePath);
 		if(stream != null){
-			StringBuilder output = new StringBuilder();
-			InputStreamReader reader = new InputStreamReader(stream);
-			int len = 1024;
-			char[] buffer = new char[len];
-			try{
-				while((len = reader.read(buffer)) >= 0){
-					output.append(buffer, 0, len);
-				}
-			}
-			catch(IOException e){
-				output.append(e.getMessage());
-			}
-			finally{
-				try {
-					reader.close();
-				}
-				catch (IOException e) {}
-			}
-			return output.toString();
+			return IO.toStringOrNull(stream);
 		}
 		throw new NotFoundException(klass, resourcePath);
 	}
@@ -87,19 +68,12 @@ public class Resources {
 		try {
 			InputStream stream = url.openConnection().getInputStream();
 			if(stream != null){
-				final char[] buffer = new char[0x10000];
-				StringBuilder output = new StringBuilder();
-				InputStreamReader reader = new InputStreamReader(stream);
-				int read;
-				do {
-					read = reader.read(buffer, 0, buffer.length);
-					if (read > 0) {
-						output.append(buffer, 0, read);
-					}
-				} while (read >= 0);
-				return output.toString();
+				return IO.toStringOrNull(stream);
 			}
 			throw new NotFoundException(url);
+		}
+		catch (NotFoundException e) {
+			throw e;
 		}
 		catch (Exception e) {
 			throw new NotFoundException(url, e);

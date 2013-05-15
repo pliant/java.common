@@ -11,6 +11,7 @@ import javax.transaction.Transaction;
 import javax.transaction.TransactionManager;
 
 /**
+ * Empty {@link TransactionManager} that does nothing.  Is no more than a placeholder.
  * 
  * @author Daniel Rugg
  */

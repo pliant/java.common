@@ -10,8 +10,9 @@ import javax.transaction.Transaction;
 import javax.transaction.xa.XAResource;
 
 /**
- * Empty Transaction
- * @author dfr2
+ * Empty {@link Transaction} that does nothing.  It's no more than a placeholder.
+ * 
+ * @author Daniel Rugg
  */
 public class PsuedoTransaction implements Transaction {
 

@@ -13,11 +13,11 @@ import java.util.Map;
 public interface Transformer {
 
 	/**
-	 * 
-	 * @param in
-	 * @param out
-	 * @param options
-	 * @throws TransformException
+	 * Performs transformation of the InputStream to an OutputStream according to the implementation.
+	 * @param in The InputStream to transform.
+	 * @param out The OutputStream to sent the transformed content to.
+	 * @param options Map for implementation specific options.
+	 * @throws TransformException If the transformation fails.
 	 */
 	void transform(InputStream in, OutputStream out, Map<String, Object> options) throws TransformException;
 }

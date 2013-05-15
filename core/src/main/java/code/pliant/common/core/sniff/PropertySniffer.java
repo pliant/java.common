@@ -13,7 +13,7 @@ import code.pliant.common.core.Strings;
 /**
  * A Sniffer that looks for the value of a property in a properties file.
  * 
- * @author dfr2
+ * @author Daniel Rugg
  */
 public class PropertySniffer implements Sniffer {
 	

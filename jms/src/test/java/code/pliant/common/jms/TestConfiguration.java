@@ -17,12 +17,12 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import code.pliant.common.test.AnnotationConfigContextLoader;
-import code.pliant.common.test.JNDIHelper;
+import code.pliant.common.test.JNDIUtils;
 
 /**
  * Tests whether the Spring configuration files are properly wired with the JMS components.
  * 
- * @author dfr2
+ * @author Daniel Rugg
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(
@@ -37,7 +37,7 @@ public class TestConfiguration {
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception{
 		try {
-			JNDIHelper.registerJTATransactionManager();
+			JNDIUtils.registerJTATransactionManager();
 		}
 		catch (IllegalStateException e) {
 			e.printStackTrace();

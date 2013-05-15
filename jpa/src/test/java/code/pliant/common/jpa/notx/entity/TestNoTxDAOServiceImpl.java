@@ -5,7 +5,7 @@ import javax.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import code.pliant.common.jpa.JPAUtils;
+import code.pliant.common.jpa.Action;
 
 
 /**
@@ -33,7 +33,7 @@ public class TestNoTxDAOServiceImpl implements TestNoTxDAOService {
 	 */
 	@Override
 	public void create(TestNoTxEntity entity){
-		JPAUtils.createAndCommit(jpaManager.getEntityManager(), entity);
+		Action.createAndCommit(jpaManager.getEntityManager(), entity);
 	}
 
 	/* (non-Javadoc)
@@ -41,7 +41,7 @@ public class TestNoTxDAOServiceImpl implements TestNoTxDAOService {
 	 */
 	@Override
 	public TestNoTxEntity update(TestNoTxEntity entity) {
-		return JPAUtils.updateAndCommit(jpaManager.getEntityManager(), entity);
+		return Action.updateAndCommit(jpaManager.getEntityManager(), entity);
 	}
 
 	/* (non-Javadoc)
@@ -49,6 +49,6 @@ public class TestNoTxDAOServiceImpl implements TestNoTxDAOService {
 	 */
 	@Override
 	public void delete(TestNoTxEntity entity) {
-		JPAUtils.deleteAndCommit(jpaManager.getEntityManager(), entity, entity.getPkey());
+		Action.deleteAndCommit(jpaManager.getEntityManager(), entity, entity.getPkey());
 	}
 }

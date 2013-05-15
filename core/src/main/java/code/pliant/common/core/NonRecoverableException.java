@@ -15,7 +15,6 @@ package code.pliant.common.core;
  * </ul>
  * As a rule, all NonRecoverableExceptions must have an explanation of what failed.  While in some cases a provided 
  * {@link java.lang.Throwable} may suffice, provided context is highly suggested.
- * 
  * </p>
  * 
  * @author Daniel Rugg

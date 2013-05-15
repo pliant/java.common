@@ -13,6 +13,7 @@ public class SystemPropertySniffer implements Sniffer {
 
 	/**
 	 * 
+	 * @param name The name of the system property to look for.
 	 */
 	public SystemPropertySniffer(String name) {
 		super();

@@ -27,7 +27,7 @@ public class XSLTTransformer implements Transformer {
 	
 	/**
 	 * Flag used to indicate that no stylesheet is used in the tranformation.  This is useful if using SAXResult/Handler 
-	 * combinations.  If no stylesheed is provided and this flag is not on the options, an exception is thrown.  The value 
+	 * combinations.  If no stylesheet is provided and this flag is not on the options, an exception is thrown.  The value 
 	 * is for this key in the options is not taken into account.
 	 */
 	public static final String XSLT_NONE = "XSLT_NONE";
@@ -63,23 +63,24 @@ public class XSLTTransformer implements Transformer {
 	}
 	
 	/**
-	 * 
-	 * @param xml
-	 * @param out
-	 * @param options
-	 * @throws TransformException
+	 * Performs the transformation from a {@link Source} to a {@link Result}.
+	 * @param xml The {@link Source} to transform.
+	 * @param out The {@link Result} to send the transformed content to.
+	 * @param options Transformation options.
+	 * @throws TransformException If the transformation fails.
 	 */
 	protected void transform(Source xml, Result out, Map<String, Object> options) throws TransformException {
 		transform(xml, getXSLT(options), out, options);
 	}
 	
 	/**
-	 * 
-	 * @param xml
-	 * @param xslt
-	 * @param out
-	 * @param options
-	 * @throws TransformException
+	 * Performs a transformation on a {@link Source} xml document using an XML Style Sheet, sending that transformation 
+	 * to the provided {@link Result}.
+	 * @param xml The XML to transform.
+	 * @param xslt The XML Style Sheet to use in the transformation.
+	 * @param out The {@link Result} to send the transformed content to.
+	 * @param options Transformation options.
+	 * @throws TransformException If the transformation fails.
 	 */
 	@SuppressWarnings("unchecked")
 	protected void transform(Source xml, Source xslt, Result out, Map<String, Object> options) throws TransformException {

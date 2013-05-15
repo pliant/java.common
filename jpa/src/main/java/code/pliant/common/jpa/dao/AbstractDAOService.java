@@ -5,12 +5,13 @@ package code.pliant.common.jpa.dao;
 
 import javax.persistence.EntityManager;
 
-import code.pliant.common.jpa.JPAUtils;
+import code.pliant.common.jpa.Action;
 
 
 /**
+ * Abstract implementation of the {@link DAOService}.  Passes CUD operations to the EntityManager.
  * 
- * @author dfr2
+ * @author Daniel Rugg
  */
 public abstract class AbstractDAOService<T> implements DAOService<T> {
 
@@ -40,6 +41,6 @@ public abstract class AbstractDAOService<T> implements DAOService<T> {
 	 * @see org.healthsciencessc.jpa.dao.DAOService#delete(java.lang.Object)
 	 */
 	public void delete(T entity){
-		JPAUtils.delete(entityManager, entity);
+		Action.delete(entityManager, entity);
 	}
 }

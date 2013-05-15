@@ -23,8 +23,9 @@ import org.w3c.dom.NodeList;
 
 
 /**
- * An DataFormt implementation that is automatically configured to marshal and unmarshall all objects that 
- * were generated from an XSD schema using the XJC converter.
+ * An DataFormt implementation that will serialize all the parts of a message into an XML structure, and deserialize it back
+ * into it's Camel message form.  This is useful for archiving the full state of a message to a file to them reprocess it 
+ * later with the same state.
  * 
  * @author Daniel Rugg
  */
@@ -103,6 +104,13 @@ public class MessageSerializationDataFormat implements DataFormat {
 		return ret;
 	}
 
+	/**
+	 * Takes the headers that are saved in an XML format and re-applies them to a message on an exchange.
+	 * 
+	 * @param headers The XML node containing all the headers.
+	 * @param exchange The Camel Exchange to apply the headers to.
+	 * @throws Exception
+	 */
 	private void processHeaders(Node headers, Exchange exchange) throws Exception{
 		Message in = exchange.getOut();
 		NodeList children = headers.getChildNodes();
@@ -112,6 +120,13 @@ public class MessageSerializationDataFormat implements DataFormat {
 		}
 	}
 
+	/**
+	 * Takes the body that is saved in an XML format and re-applies it to a message on an exchange.
+	 * 
+	 * @param body The XML node containing the body of the message.
+	 * @param exchange The Camel Exchange to apply the body to.
+	 * @throws Exception
+	 */
 	private Object processBody(Node body, Exchange exchange) throws Exception{
 		StringBuilder text = new StringBuilder();
 		Message in = exchange.getOut();

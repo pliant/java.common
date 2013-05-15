@@ -16,6 +16,7 @@ public class Paths {
 	
 	/**
 	 * Determines if a path is absolute or not.
+	 * 
 	 * @param path The path to check.
 	 * @return <code>true</code> if the path starts with a slash '/'
 	 */
@@ -31,6 +32,7 @@ public class Paths {
 	/**
 	 * Gets the absolute path of a file.  If the given path is absolute, it is returned, else it's absolute 
 	 * is calculated from the directory given.
+	 * 
 	 * @param directory The directory to work from.
 	 * @param path The path to make absolute if not already.
 	 * @return An absolute path, starting with a slash.
@@ -46,6 +48,7 @@ public class Paths {
 	
 	/**
 	 * Takes a collection of paths and returns an equivalent collection of absolute paths derived 
+	 * 
 	 * @param <T>
 	 * @param directory The directory from which relative paths will be calculated.
 	 * @param paths The collection of paths to convert if needed.
@@ -74,6 +77,7 @@ public class Paths {
 	/**
 	 * Concatenates a list of paths together in the format the java executable would expect the 
 	 * ClassPath to be delivered in.
+	 * 
 	 * @param paths The collection of absolute paths to concatenate together.
 	 * @return A string containing the paths separated with the approppriate separator character.
 	 */
@@ -90,6 +94,7 @@ public class Paths {
 	 * Concatenates a list of paths together in the format the java executable would expect the 
 	 * ClassPath to be delivered in.  Verifies all of the paths are absolute, and any that are 
 	 * relative are made absolute using the provided directory.
+	 * 
 	 * @param directory The directory to use to turn relative paths into absolute paths.
 	 * @param paths The collection of absolute paths to concatenate together.
 	 * @return A string containing the paths separated with the approppriate separator character.
@@ -117,6 +122,7 @@ public class Paths {
 
 	/**
 	 * Returns the package path as recognized by the Spring Resource URL.  java.util.Map would return <code>/java/util</code>
+	 * 
 	 * @param klass The class whose package name is transformed.
 	 * @return The transformed package name.  If null, and empty string is returned.
 	 */
@@ -124,16 +130,17 @@ public class Paths {
 		if(klass == null){
 			return Strings.EMPTY;
 		}
-		return klass.getPackage().getName().replaceAll("\\.", Path.ROOT);
+		return klass.getPackage().getName().replaceAll("\\.", Path.SEPARATOR);
 	}
 
 	/**
 	 * Returns the package path as recognized by the Spring Resource URL.  java.util.Map would return <code>/java/util</code>
+	 * 
 	 * @param klass The class whose package name is transformed.
 	 * @return The transformed package name.  If null, and empty string is returned.
 	 */
 	public static String toRootPath(Class klass){
-		return Path.ROOT + toPath(klass);
+		return Path.SEPARATOR + toPath(klass);
 	}
 	
 	/**
@@ -148,12 +155,12 @@ public class Paths {
 	public static String configFileName(Class prefixer, String... ids){
 		StringBuilder name = new StringBuilder();
 		if(prefixer != null){
-			name.append(prefixer.getPackage().getName()).append(Path.SEPARATOR);
+			name.append(prefixer.getPackage().getName()).append(Path.DASH);
 		}
 		if(ids != null && ids.length > 0){
 			for(String id : ids){
 				if(Strings.isValid(id)){
-					name.append(id).append(Path.SEPARATOR);
+					name.append(id).append(Path.DASH);
 				}
 			}
 		}
@@ -166,16 +173,16 @@ public class Paths {
 	 * ids provided, if any, in order, and 'config.props' all concatenated with '-'.  So, a call of 
 	 * configFileName(java.lang.String, java.util.Map.class, 'yo', 'dave') will create the name 'java/lang/java.util-yo-dave-config.props'.
 	 * 
-	 * @param path The class to use as a director path to the file.
+	 * @param klass The class to use as a director path to the file.
 	 * @param prefixer The Class whose package to use as the prefix of the name of the file.
 	 * @param ids Any additional identifiers that are wanted in the name of the file.
 	 * @return The final string name.
 	 */
-	public static String configFileName(Class path, Class prefixer, String...ids){
-		if(path == null){
+	public static String configFileName(Class klass, Class prefixer, String...ids){
+		if(klass == null){
 			configFileName(prefixer, ids);
 		}
-		return toPath(path) + rootConfigFileName(prefixer, ids);
+		return toPath(klass) + rootConfigFileName(prefixer, ids);
 	}
 	
 	/**
@@ -188,7 +195,7 @@ public class Paths {
 	 * @return The final string name.
 	 */
 	public static String rootConfigFileName(Class prefixer, String...ids){
-		return Path.ROOT + configFileName(prefixer, ids);
+		return Path.SEPARATOR + configFileName(prefixer, ids);
 	}
 	
 	/**
@@ -197,13 +204,13 @@ public class Paths {
 	 * configFileName(java.lang.String, java.util.Map.class, 'yo', 'dave') will create the name 
 	 * '/java/lang/java.util-yo-dave-config.props'.
 	 * 
-	 * @param path The class to use as a director path to the file.
+	 * @param klass The class to use as a director path to the file.
 	 * @param prefixer The Class whose package to use as the prefix of the name of the file.
 	 * @param ids Any additional identifiers that are wanted in the name of the file.
 	 * @return The final string name.
 	 */
-	public static String rootConfigFileName(Class path, Class prefixer, String...ids){
-		return toRootPath(path) + rootConfigFileName(prefixer, ids);
+	public static String rootConfigFileName(Class klass, Class prefixer, String...ids){
+		return toRootPath(klass) + rootConfigFileName(prefixer, ids);
 	}
 	
 	/**
@@ -225,13 +232,13 @@ public class Paths {
 	 * configFileName(java.lang.String, java.util.Map.class, 'yo', 'dave') will create the name 
 	 * 'classpath:java/lang/java.util-yo-dave-config.props'.
 	 * 
-	 * @param path The class to use as a director path to the file.
+	 * @param klass The class to use as a director path to the file.
 	 * @param prefixer The Class whose package to use as the prefix of the name of the file.
 	 * @param ids Any additional identifiers that are wanted in the name of the file.
 	 * @return The final string name.
 	 */
-	public static String classPathConfigFileName(Class path, Class prefixer, String...ids){
-		return Path.CLASSPATH_FIRST + toPath(path) + rootConfigFileName(prefixer, ids);
+	public static String classPathConfigFileName(Class klass, Class prefixer, String...ids){
+		return Path.CLASSPATH_FIRST + toPath(klass) + rootConfigFileName(prefixer, ids);
 	}
 	
 	/**

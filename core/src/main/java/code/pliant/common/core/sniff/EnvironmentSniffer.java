@@ -13,6 +13,7 @@ public class EnvironmentSniffer implements Sniffer {
 	
 	/**
 	 * 
+	 * @param name The name of the environment variable to look for.
 	 */
 	public EnvironmentSniffer(String name) {
 		super();

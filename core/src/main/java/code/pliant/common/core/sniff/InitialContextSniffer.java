@@ -16,7 +16,7 @@ public class InitialContextSniffer implements Sniffer {
 	String name = null;
 	
 	/**
-	 * @param name
+	 * @param name The name to use to lookup the resource in the InitialContext.
 	 */
 	public InitialContextSniffer(String name) {
 		super();

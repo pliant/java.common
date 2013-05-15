@@ -8,7 +8,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import code.pliant.common.jpa.springtx.entity.TestSpringTxEntity;
 import code.pliant.common.test.AnnotationConfigContextLoader;
-import code.pliant.common.test.JNDIHelper;
+import code.pliant.common.test.JNDIUtils;
 
 
 /**
@@ -27,7 +27,7 @@ public class TestSpringTransaction {
 
 	// Create JNDI DataSource
 	static{
-		JNDIHelper.registerDatabase("jdbc/test", "testdb");
+		JNDIUtils.registerDatabase("jdbc/test", "testdb");
 	}
 	
 	@Autowired

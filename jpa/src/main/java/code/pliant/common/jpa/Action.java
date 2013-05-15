@@ -11,10 +11,11 @@ import code.pliant.common.core.Reflections;
 
 
 /**
+ * Helper utility for performing common actions with JPA.
  * 
  * @author Daniel Rugg
  */
-public class JPAUtils {
+public class Action {
 	
 	/**
 	 * 

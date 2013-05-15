@@ -9,12 +9,16 @@ import java.util.ArrayList;
  */
 public class Strings {
 	
+	/**
+	 * A constant empty string.
+	 */
 	public static final String EMPTY = "";
 
 	/**
-	 * Concats a collects of strings together, using a default delimiter string between them.
+	 * Concatenates a variable array of strings together, using a delimiter between them.
+	 * 
 	 * @param delim The delimiter to put between each non-null, non-empty string.
-	 * @param values The values to concat together.
+	 * @param values The values to concatenate together.
 	 * @return A string
 	 */
 	public static String concat(String delim, String...values){
@@ -36,7 +40,8 @@ public class Strings {
 	
 	/**
 	 * Checks if a String value is valid, which means a non-null string containing more 
-	 * than white characters.
+	 * than whitespace characters.
+	 * 
 	 * @param value The string value to check.
 	 * @return {@code true} if the value is not null and has non-whitespace characters.
 	 */
@@ -48,7 +53,18 @@ public class Strings {
 	}
 	
 	/**
+	 * Checks if a string is invalid, meaning it is null, empty, or contains only whitespace.
+	 * 
+	 * @param value The string value to check.
+	 * @return {@code true} if the string is null, empty, or contains only whitespace, else {@code false}.
+	 */
+	public static boolean isInvalid(String value){
+		return !isValid(value);
+	}
+	
+	/**
 	 * If the value provided is not null, it's toString() result will be returned, else EMPTY will.
+	 * 
 	 * @param value The value to check.
 	 * @return The value passed if it is valid, else an empty string.
 	 */
@@ -63,6 +79,7 @@ public class Strings {
 	
 	/**
 	 * If the value provided is not null, it's toString() result will be returned, else null will.
+	 * 
 	 * @param value The value to check.
 	 * @return The value passed if it is valid, else a null.
 	 */
@@ -77,9 +94,9 @@ public class Strings {
 	
 	/**
 	 * Returns a specified number of characters from the left side.
-	 * @param value
-	 * @param len
-	 * @return 
+	 * @param value The value to pull from.
+	 * @param len The number of characters to take from the left side of the string.
+	 * @return A string.
 	 */
 	public static String left(String value, int len){
 		value = toStringOrEmpty(value);
@@ -88,11 +105,25 @@ public class Strings {
 		}
 		return value.substring(0, len);
 	}
+	
+	/**
+	 * Returns a specified number of characters from the right side of a string.
+	 * @param value The value to pull from.
+	 * @param len The number of characters to take from the right side of the string.
+	 * @return A string.
+	 */
+	public static String right(String value, int len){
+		value = toStringOrEmpty(value);
+		if(value.length() <= len){
+			return value;
+		}
+		return value.substring(value.length() - len);
+	}
 
 	/**
-	 * Creates an array with only the valid values within the array.
-	 * @param values
-	 * @return
+	 * Creates an array with only the valid values within the array according to the {@link isValid} method.
+	 * @param values The values to validate and return.
+	 * @return An array of the valid strings.  Can be empty, but never null.
 	 */
 	public static String[] toValidArray(String[] values){
 		ArrayList<String> list = new ArrayList<String>();

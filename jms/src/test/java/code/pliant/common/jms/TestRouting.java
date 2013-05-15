@@ -21,14 +21,14 @@ import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
 import code.pliant.common.test.AnnotationConfigContextLoader;
 import code.pliant.common.test.CamelUtils;
-import code.pliant.common.test.JNDIHelper;
+import code.pliant.common.test.JNDIUtils;
 import code.pliant.common.test.MailUtils;
 
 /**
  * Tests to whether the Camel component for sending and receiving messages between the message queues are
  * functioning properly.
  * 
- * @author dfr2
+ * @author Daniel Rugg
  */
 @ContextConfiguration(
 		locations = {"code.pliant.common", "spring.code.pliant.common"},
@@ -59,7 +59,7 @@ public class TestRouting extends AbstractJUnit4SpringContextTests {
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		try {
-			JNDIHelper.registerJTATransactionManager();
+			JNDIUtils.registerJTATransactionManager();
 		}
 		catch (IllegalStateException e) {
 			e.printStackTrace();

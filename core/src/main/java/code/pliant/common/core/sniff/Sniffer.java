@@ -4,14 +4,15 @@ import code.pliant.common.core.NotFoundException;
 import code.pliant.common.core.Strings;
 
 /**
- * A Sniffer is used to find a value in a specific location.
+ * A Sniffer is used to find a value in a some location.
  * 
  * @author Daniel Rugg
  */
 interface Sniffer{
 	
 	/**
-	 * Common NotFoundException thrown by sniffers when they don't find a value.
+	 * Common NotFoundException thrown by sniffers when they don't find a value.  
+	 * Its used to signify to move onto next sniffer.
 	 */
 	public static final NotFoundException NFE = new NotFoundException(Strings.EMPTY);
 	

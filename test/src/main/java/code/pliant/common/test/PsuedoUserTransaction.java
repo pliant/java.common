@@ -9,8 +9,9 @@ import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 
 /**
- * Empty UserTransaction
- * @author dfr2
+ * Empty {@link UserTransaction} that does nothing.  It's no more than a placeholder.
+ * 
+ * @author Daniel Rugg
  */
 public class PsuedoUserTransaction implements UserTransaction {
 

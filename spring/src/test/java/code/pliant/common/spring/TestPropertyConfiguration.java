@@ -19,8 +19,8 @@ import code.pliant.common.test.AnnotationConfigContextLoader;
 
 
 /**
- * @author dfr2
- *
+ * 
+ * @author Daniel Rugg
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(

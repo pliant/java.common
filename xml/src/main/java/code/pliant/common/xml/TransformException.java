@@ -2,7 +2,7 @@ package code.pliant.common.xml;
 
 
 /**
- * 
+ * Thrown from {@link Transformer}s when a transformation fails.
  * 
  * @author Daniel Rugg
  */

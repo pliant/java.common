@@ -18,7 +18,7 @@ import code.pliant.common.xml.XSLTTransformer;
 
 
 /**
- * Transforms XML using a stylesheet.
+ * Transforms XML using the Apache FOP Library.
  * 
  * @author Daniel Rugg
  */

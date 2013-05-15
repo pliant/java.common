@@ -16,7 +16,13 @@ import code.pliant.common.jms.AbstractActiveMQConfiguration;
 
 
 /**
- * Provided an example of how to use the AbstractActiveMQConfiguration class.
+ * <p>
+ * Provided an example of how to use the {@link AbstractActiveMQConfiguration} class.  Also serves 
+ * as a default implementation of the {@link AbstractActiveMQConfiguration} class.
+ * </p>
+ * <p>
+ * To enable this component, use the @Import() annotation with this class referenced in it.
+ * </p>
  * 
  * @author Daniel Rugg
  */

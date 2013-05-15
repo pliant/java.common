@@ -2,7 +2,7 @@ package code.pliant.common.core;
 
 
 /**
- * Provides Modulus calculations that are sometimes commont for validating data values.
+ * Provides Modulus calculations that are sometimes common for validating data values.
  * 
  * @author Daniel Rugg
  */

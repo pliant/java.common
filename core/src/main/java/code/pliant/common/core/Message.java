@@ -10,12 +10,16 @@ import java.util.TimeZone;
 
 /**
  * Facade object to use for creating messages that will be logged to a system log or 
- * wrapped within exceptions. 
+ * wrapped within exceptions. Provides a centralized object to determine how data 
+ * structures should be represented in logs, etc.
  * 
  * @author Daniel Rugg
  */
 public class Message {
 	
+	/**
+	 * Generic formatter used for date based values.  Format value is {@code yyyy-MM-dd HH:mm:ss z}.
+	 */
 	public static final DateFormat DATE_FORMATTER = 
 		new SimpleDateFormat("yyyy-MM-dd HH:mm:ss z");
 
@@ -25,41 +29,81 @@ public class Message {
 	
 	private boolean changed = true;
 	
+	/**
+	 * Printed value used for nulls.  Value is {@code <null>}
+	 */
 	public static final String NULL = "<null>";
 	
+
+	/**
+	 * Printed value used for separating key/value pairs.  Value is {@code ;}
+	 */
 	public static final char SEPORATOR = ';';
-	
+
+	/**
+	 * Printed value used for equating keys to their values.  Value is {@code =}
+	 */
 	public static final char EQUALS = '=';
-	
+
+	/**
+	 * Printed value used for starting a data structure.  Value is <code>{</code>
+	 */
 	public static final char CLOSURE_START = '{';
 	
+	/**
+	 * Printed value used for ending a data structure.  Value is <code>}</code>
+	 */
 	public static final char CLOSURE_END = '}';
 	
+	/**
+	 * Printed value used for starting an array of values.  Value is {@code [ }
+	 */
 	public static final char ARRAY_START = '[';
 	
+	/**
+	 * Printed value used for ending an array of values.  Value is {@code [ }
+	 */
 	public static final char ARRAY_END = ']';
 	
+	/**
+	 * Printed value used for quoting.  Value is {@code " }
+	 */
 	public static final char QUOTE = '"';
 	
+	/**
+	 * Printed value used for mixed quoting.  Value is {@code ' }
+	 */
 	public static final char TICK = '\'';
 	
+	/**
+	 * Newline character.  Value is {@code \n }
+	 */
 	public static final char NEWLINE = '\n';
 	
+	/**
+	 * Tab character.  Value is {@code \n }
+	 */
 	public static final char TAB = '\t';
 	
+	/**
+	 * Space character.  Value is {@code \n }
+	 */
 	public static final char SPACE = ' ';
 	
+	/**
+	 * Comma character.  Value is {@code \n }
+	 */
 	public static final char COMMA = ',';
 	
 	/**
-	 * 
+	 * Empty Constructor.
 	 */
 	public Message() {
 		super();
 	}
 	
 	/**
-	 * 
+	 * Constructor with the start of a message.
 	 */
 	public Message(String start) {
 		super();
@@ -163,9 +207,9 @@ public class Message {
 	}
 
 	/**
-	 * Adds a named array of values to the message. 
+	 * Adds a named Collection of values to the message. 
 	 * @param name The name of the value to add.
-	 * @param values The array of values to add.
+	 * @param values The Collection of values to add.
 	 * @return this instance.
 	 */
 	public Message add(String name, Collection<?> values){
@@ -233,7 +277,7 @@ public class Message {
 	
 	/**
 	 * Returns the value the passed parameter represents.
-	 * @param value
+	 * @param value The value to convert to a String, as interpreted by the Message.
 	 * @return The String value of the object passed, as the Message would interpret that value.
 	 */
 	public static String toString(Object value){

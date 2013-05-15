@@ -12,15 +12,16 @@ import org.jvnet.mock_javamail.Mailbox;
 
 
 /**
- * Utility for testing 
+ * Utility for testing email processing.
  * 
  * @author Daniel Rugg
  */
 public class MailUtils {
 
 	/**
-	 * Clears Out The Email From A Mailbox.
-	 * @param emailAddress
+	 * Clears out the email from a mailbox.
+	 * 
+	 * @param emailAddress The email address identifying the MailBox to clear out.
 	 */
 	public static void clear(String emailAddress){
 		try {
@@ -32,8 +33,12 @@ public class MailUtils {
 	}
 	
 	/**
-	 * Performs a basic check of the mailbox to ensure that a message was received.
-	 * @return
+	 * Performs a basic check of the mailbox to ensure that a single message was received.  
+	 * Declares assertions that there must be 1 new message, and only that 1 new message, in 
+	 * the mailbox.
+	 * 
+	 * @param emailAddress The email address identifying the MailBox to check for message.
+	 * @return The message that was received.
 	 */
 	public static Message checkForMessage(String emailAddress){
 		Mailbox mailbox = Mailbox.get(checkAddress(emailAddress));
@@ -45,8 +50,11 @@ public class MailUtils {
 	}
 	
 	/**
-	 * Performs a basic check of the mailbox to ensure that a message was received.
-	 * @return
+	 * Performs a basic check of the mailbox to ensure that a message was received.  Asserts 
+	 * that the mailbox size must match the size given.
+	 * 
+	 * @param emailAddress The email address identifying the MailBox to check.
+	 * @param count The number of messages that must be in the MailBox.
 	 */
 	public static void checkMessageCount(String emailAddress, int count){
 		Mailbox mailbox = Mailbox.get(checkAddress(emailAddress));
@@ -54,8 +62,10 @@ public class MailUtils {
 	}
 	
 	/**
-	 * Performs a basic check of the mailbox to ensure that messages were received.
-	 * @return
+	 * Performs a basic check of the mailbox to ensure that new messages exist in the MailBox.
+	 * 
+	 * @param emailAddress The email address identifying the MailBox to check.
+	 * @return The first Message in the MailBox.
 	 */
 	public static Message checkForMessages(String emailAddress){
 		Mailbox mailbox = Mailbox.get(checkAddress(emailAddress));
@@ -68,8 +78,10 @@ public class MailUtils {
 	
 	/**
 	 * Checks the validity of an email address.
-	 * @param address
-	 * @return
+	 * 
+	 * @param address The address to check.
+	 * @return If the address is valid, the {@link InternetAddress} representation is returned, else an 
+	 * assertion error is thrown.
 	 */
 	public static InternetAddress checkAddress(String address){
 		try {
@@ -82,12 +94,14 @@ public class MailUtils {
 	}
 	
 	/**
-	 * Checks the content of that message.
-	 * @param message
-	 * @param subject
-	 * @param contentParts
-	 * @throws MessagingException
-	 * @throws IOException 
+	 * Checks the subject and content of a message, asserting that the message subject equals subject provided, 
+	 * and that the message content contains the content parts provided.
+	 * 
+	 * @param message The message to inspect.
+	 * @param subject The subject value to match against.
+	 * @param contentParts The content parts to look for in the message.
+	 * @throws MessagingException Throws from standard inspection of the Message.
+	 * @throws IOExceptionThrows from standard inspection of the Message.
 	 */
 	public static void checkMessageContent(Message message, String subject, String... contentParts) throws MessagingException, IOException{
 		if(subject != null){
@@ -102,24 +116,28 @@ public class MailUtils {
 	}
 	
 	/**
-	 * Performs the full check for an address and expected message.
-	 * @param address
-	 * @param subject
-	 * @param contentParts
-	 * @throws MessagingException
-	 * @throws IOException 
+	 * Checks the subject and content of a message, asserting that the message subject equals subject provided, 
+	 * and that the message content contains the content parts provided.
+	 * 
+	 * @param address The email address whose MailBox to inspect for a message.
+	 * @param subject The subject value to match against.
+	 * @param contentParts The content parts to look for in the message.
+	 * @throws MessagingException Throws from standard inspection of the Message.
+	 * @throws IOExceptionThrows from standard inspection of the Message.
 	 */
 	public static void check(String address, String subject, String... contentParts) throws MessagingException, IOException{
 		checkMessageContent(checkForMessage(address), subject, contentParts);
 	}
 	
 	/**
-	 * Performs the full check for an address and expected messages.
-	 * @param address
-	 * @param subject
-	 * @param contentParts
-	 * @throws MessagingException
-	 * @throws IOException 
+	 * Checks the subject and content of a message, asserting that the message subject equals subject provided, 
+	 * and that the message content contains the content parts provided.
+	 * 
+	 * @param address The email address whose MailBox to inspect for a messages.
+	 * @param subject The subject value to match against.
+	 * @param contentParts The content parts to look for in the message.
+	 * @throws MessagingException Throws from standard inspection of the Message.
+	 * @throws IOExceptionThrows from standard inspection of the Message.
 	 */
 	public static void checks(String address, String subject, String... contentParts) throws MessagingException, IOException{
 		checkMessageContent(checkForMessages(address), subject, contentParts);

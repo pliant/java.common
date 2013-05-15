@@ -8,7 +8,8 @@ import code.pliant.common.core.Resources;
 import code.pliant.common.core.Strings;
 
 /**
- * A Sniffer that looks for content at a specified location.
+ * A Sniffer that looks for content in a resource found at a specific URL.  Can be a file on the file system, 
+ * on the ClassPath, or on another server.  Any valid URL can be used.
  * 
  * @author Daniel Rugg
  */

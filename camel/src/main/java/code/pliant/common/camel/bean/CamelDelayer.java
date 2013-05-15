@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 @Service(CamelDelayer.COMPONENT_ID)
 public class CamelDelayer {
 	
-	public static final String COMPONENT_ID = "hsscCamelDelayer";
+	public static final String COMPONENT_ID = "PliantCamelDelayer";
 
 	@Autowired
 	CamelConfiguration config;

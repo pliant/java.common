@@ -14,33 +14,33 @@ public class SQL {
 	
 	/**
 	 * Performs a close on a Connection, catching any exceptions thrown.
-	 * @param target
+	 * @param connection The Connection to close.
 	 */
-	public static void close(Connection target){
+	public static void close(Connection connection){
 		try {
-			target.close();
+			connection.close();
 		}
 		catch (Exception e) {}
 	}
 	
 	/**
 	 * Performs a close on a Statement, catching any exceptions thrown.
-	 * @param target
+	 * @param statement The Statement to close.
 	 */
-	public static void close(Statement target){
+	public static void close(Statement statement){
 		try {
-			target.close();
+			statement.close();
 		}
 		catch (Exception e) {}
 	}
 	
 	/**
 	 * Performs a close on a ResultSet, catching any exceptions thrown.
-	 * @param target
+	 * @param resultSet The ResultSet to close.
 	 */
-	public static void close(ResultSet target){
+	public static void close(ResultSet resultSet){
 		try {
-			target.close();
+			resultSet.close();
 		}
 		catch (Exception e) {}
 	}

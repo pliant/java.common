@@ -10,50 +10,40 @@ package code.pliant.common.camel;
 public class Constants {
 	
 	/**
-	 * Provides the prefix to all of the values.
-	 * @param suffix
-	 * @return
-	 */
-	private static String name(String suffix){
-		final String prefix = "Hssc";
-		return prefix + suffix;
-	}
-	
-	/**
 	 * The key used to store the transaction id value in the message header when it first enters our 
 	 * system.  Value is <code>HsscTransactionID</code>
 	 */
-	public static final String TRANSACTION_ID = name("TransactionID");
+	public static final String TRANSACTION_ID = "PliantTransactionID";
 	
 	/**
 	 * The key used to store the transaction id timestamp value in the message header when it first enters our 
 	 * system.  Value is <code>HsscTransactionIDTimestamp</code>
 	 */
-	public static final String TRANSACTION_ID_TIMESTAMP = name("TransactionIDTimestamp");
+	public static final String TRANSACTION_ID_TIMESTAMP = "PliantTransactionIDTimestamp";
 	
 	/**
 	 * The key used to store the message value in the message header when it first enters our 
 	 * system.  Value is <code>HsscSource</code>
 	 */
-	public static final String MESSAGE_SOURCE = name("Source");
+	public static final String MESSAGE_SOURCE = "PliantSource";
 	
 	/**
 	 * The key used to store the format of the message body in the message header when it first enters our 
 	 * system.  Value is <code>HsscFormat</code>
 	 */
-	public static final String MESSAGE_FORMAT = name("Format");
+	public static final String MESSAGE_FORMAT = "PliantFormat";
 	
 	/**
 	 * The key used to store the specific message feed in the message header when it first enters our 
 	 * system.  Value is <code>HsscFeed</code>
 	 */
-	public static final String MESSAGE_FEED = name("Feed");
+	public static final String MESSAGE_FEED = "PliantFeed";
 	
 	/**
 	 * The key used to store the specific event that triggered the message in the message header when it first enters our 
 	 * system.  Value is <code>HsscEvent</code>
 	 */
-	public static final String MESSAGE_EVENT = name("Event");
+	public static final String MESSAGE_EVENT = "PliantEvent";
 
 	/**
 	 * Value to indicate a message is in the format of HL7.
@@ -74,35 +64,35 @@ public class Constants {
 	 * The key used to store the exception class name stored in the Exchange when an error occurs. 
 	 * Value is <code>HsscExchangeExceptionType</code>
 	 */
-	public static final String EXCHANGE_EXCEPTION_TYPE = name("ExchangeExceptionType");
+	public static final String EXCHANGE_EXCEPTION_TYPE = "PliantExchangeExceptionType";
 	
 	/**
 	 * The key used to store the exception message stored in the Exchange when an error occurs. 
 	 * Value is <code>HsscExchangeExceptionMessage</code>
 	 */
-	public static final String EXCHANGE_EXCEPTION_MESSAGE = name("ExchangeExceptionMessage");
+	public static final String EXCHANGE_EXCEPTION_MESSAGE = "PliantExchangeExceptionMessage";
 	
 	/**
 	 * The key used to store the exception stack stored in the Exchange when an error occurs. 
 	 * Value is <code>HsscExchangeExceptionStack</code>
 	 */
-	public static final String EXCHANGE_EXCEPTION_STACK = name("ExchangeExceptionStack");
+	public static final String EXCHANGE_EXCEPTION_STACK = "PliantExchangeExceptionStack";
 
 	/**
 	 * The key used to store the exception class name stored in the Message when an error occurs. 
 	 * Value is <code>HsscMessageExceptionType</code>
 	 */
-	public static final String MESSAGE_EXCEPTION_TYPE = name("MessageExceptionType");
+	public static final String MESSAGE_EXCEPTION_TYPE = "PliantMessageExceptionType";
 	
 	/**
 	 * The key used to store the exception message stored in the Message when an error occurs. 
 	 * Value is <code>HsscMessageExceptionMessage</code>
 	 */
-	public static final String MESSAGE_EXCEPTION_MESSAGE = name("MessageExceptionMessage");
+	public static final String MESSAGE_EXCEPTION_MESSAGE = "PliantMessageExceptionMessage";
 	
 	/**
 	 * The key used to store the exception stack stored in the Message when an error occurs. 
 	 * Value is <code>HsscMessageExceptionStack</code>
 	 */
-	public static final String MESSAGE_EXCEPTION_STACK = name("MessageExceptionStack");
+	public static final String MESSAGE_EXCEPTION_STACK = "PliantMessageExceptionStack";
 }

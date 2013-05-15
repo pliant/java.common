@@ -20,12 +20,34 @@ import javax.xml.bind.DatatypeConverter;
  */
 public class Images {
 
+	/**
+	 * Mime type of a PNG.  Value is {@code image/png};
+	 */
 	public static final String IMAGE_PNG = "image/png";
+	
+	/**
+	 * Mime type of a JPEG.  Value is {@code image/jpeg};
+	 */
 	public static final String IMAGE_JPEG = "image/jpeg";
+	
+	/**
+	 * BASE64 hint for the image data.  Value is {@code ;base64,};
+	 */
 	public static final String BASE64 = ";base64,";
+	
+	/**
+	 * Data protocol for a URI.  Value is {@code data:};
+	 */
 	public static final String DATA = "data:";
 	
+	/**
+	 * Full URI prefix for an BASE64 encoded PNG.  Value is {@link #DATA} + {@link #IMAGE_PNG} + {@link #BASE64}
+	 */
 	public static final String DATA_IMAGE_PNG_BASE64 = DATA + IMAGE_PNG + BASE64;
+	
+	/**
+	 * Full URI prefix for an BASE64 encoded JPG.  Value is {@link #DATA} + {@link #IMAGE_JPEG} + {@link #BASE64}
+	 */
 	public static final String DATA_IMAGE_JPEG_BASE64 = DATA + IMAGE_JPEG + BASE64;
 	
 	/**
@@ -33,9 +55,9 @@ public class Images {
 	 * just the base64 encoded string or the encoded string prefixed with the 'data:image/...;base64'
 	 * prefix.
 	 * 
-	 * @param encodedImage
+	 * @param encodedImage The encoded image value.
 	 * @return A {@link BufferedImage} generated from the encoded string.
-	 * @throws IOException
+	 * @throws IOException When the image conversion fails to be read.
 	 */
 	public static BufferedImage toBufferedImage(String encodedImage) throws IOException{
 		if(!Strings.isValid(encodedImage)){
@@ -53,11 +75,11 @@ public class Images {
 	}
 	
 	/**
-	 * Converst a PNG encoded string into a JPEG encoded string.
+	 * Converts a PNG encoded string into a JPEG encoded string.
 	 * @param encodedImage The encoded PNG value.
 	 * @param transparentColor The color to use to replace transparency, as JPEG does not support it.
 	 * @return A Base64 encoded JPEG.
-	 * @throws IOException
+	 * @throws IOException If the conversion fails to write.
 	 */
 	public static String convertPNGToJPEG(String encodedImage, Color transparentColor ) throws IOException{
 		BufferedImage png = toBufferedImage(encodedImage);
@@ -70,7 +92,8 @@ public class Images {
 	
 	/**
 	 * Converts a PNG BufferedImage to a JPEG BufferedImage.
-	 * @param originalA {@link BufferedImage} of type PNG.
+	 * @param original A {@link BufferedImage} of type PNG.
+	 * @param transparentColor The color to use to replace transparency, as JPEG does not support it.
 	 * @return A {@link BufferedImage} of type JPEG.
 	 */
 	public static BufferedImage convertPNGToJPEG(BufferedImage original, Color transparentColor){
@@ -112,7 +135,7 @@ public class Images {
 
 	/**
 	 * Fill in an image with a specific color.
-	 * @param image A {@link BufferedImage} to fill in.
+	 * @param original A {@link BufferedImage} to fill in.
 	 * @param fillColor The color used for the fill.
 	 * @return A {@link BufferedImage} with it's background filled in.
 	 */

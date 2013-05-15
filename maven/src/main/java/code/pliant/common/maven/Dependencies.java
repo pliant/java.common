@@ -12,7 +12,7 @@ import org.apache.maven.execution.MavenSession;
 
 
 /**
- * Utility methods for Maven
+ * Utility methods for Maven dependancies.
  * 
  * @author Daneil Rugg
  */
@@ -21,8 +21,8 @@ public class Dependencies {
 	/**
 	 * Checks if an artifact is found in the classpath elements.
 	 * 
-	 * @param artifactId
-	 * @param classPathElements
+	 * @param artifactId The ID of the artifact.
+	 * @param classPathElements Collection of classpath entries.
 	 */
 	public static boolean isArtifactInClasspath(String artifactId, Collection<String> classPathElements){
 		Pattern pattern = Pattern.compile("^.*/" + artifactId + "[^/]+.jar$");
@@ -39,16 +39,15 @@ public class Dependencies {
 	/**
 	 * Forces Maven to find a dependency and load it into the repository for use.
 	 * 
-	 * @param session
-	 * @param groupId
-	 * @param artifactId
-	 * @param version
-	 * @return
+	 * @param session The current MavenSession.
+	 * @param groupId The group ID of the Artifact to load.
+	 * @param artifactId The artifact ID of the Artifact to load.
+	 * @param version The version of the Artifact to load.
 	 */
-	public static String loadDependency(MavenSession session, String groupId, String artifactId, String version){
+	public static void loadDependency(MavenSession session, String groupId, String artifactId, String version){
+		// TODO: Implement
 		VersionRange range = VersionRange.createFromVersion(version);
 		range.toString();
 		//Artifact artifact = new DefaultArtifact(groupId, artifactId, range, scope, "jar", classifier, artifactHandler)
-		return null;
 	}
 }

@@ -21,6 +21,7 @@ public class Reflections {
 	
 	/**
 	 * Obtains a list of member fields from a class that may contain values to operate on.
+	 * 
 	 * @param klass The class to inspect. Can not be <code>null</code>.
 	 * @param stopClass The parent class to stop inspection at when navigating the inheritance tree.
 	 * <code>null</code> is treated as Object.class.
@@ -132,6 +133,7 @@ public class Reflections {
 
 	/**
 	 * Finds the values on an object for a list of fields.
+	 * 
 	 * @param fields The fields whose values are to be returned.
 	 * @param source The Object to inspect for values.
 	 * @return A mapping of the field name to values.
@@ -156,6 +158,7 @@ public class Reflections {
 	
 	/**
 	 * Finds the values on an object for a collection of Fields.
+	 * 
 	 * @param fields A list of fields to lookup on the object.
 	 * @param source The object to inspect.
 	 * @return A map matching a field with it's value on an object.
@@ -215,6 +218,7 @@ public class Reflections {
 	
 	/**
 	 * Aligns the values from the source map with the fields in the target map into a new mapping.
+	 * 
 	 * @param source A map of field names and their value.
 	 * @param fields A list of Fields.
 	 * @return A map matching Fields to their values.
@@ -232,6 +236,7 @@ public class Reflections {
 	/**
 	 * Transfers the values found in one object to another object.  The values are transfered if 
 	 * the name and type of the field are the same.
+	 * 
 	 * @param source The Field/Value mapping to get the values from.
 	 * @param target The object to transfer the values to.
 	 */
@@ -252,6 +257,7 @@ public class Reflections {
 	/**
 	 * Copies the values from found in one object to another, except fields whose values are indicated in the 
 	 * skipFields arguments.
+	 * 
 	 * @param source The object to copy values from.
 	 * @param target The object to copy the values to.
 	 * @param skipFields Names of fields to not copy the values of.
@@ -267,6 +273,7 @@ public class Reflections {
 	/**
 	 * Makes a copy of the object that is passed in, including it's values except fields whose values are indicated in the 
 	 * skipFields arguments.
+	 * 
 	 * @param source The object to copy values from.
 	 * @param skipFields Names of fields to not copy the values of.
 	 * @return The copy that was created.
@@ -279,6 +286,7 @@ public class Reflections {
 	}
 	/**
 	 * Obtains a list of member fields from a class that may contain values to operate on.
+	 * 
 	 * @param klass The class to inspect. Can not be <code>null</code>.
 	 * @param stopClasses The parent class to stop inspection at when navigating the inheritance tree.
 	 * <code>null</code> is treated as Object.class.
@@ -364,6 +372,7 @@ public class Reflections {
 	
 	/**
 	 * Finds the getter methods within a list of methods and maps them to the values they return.
+	 * 
 	 * @param methods
 	 * @param source
 	 * @return A mapping of the methods and the values they return.
@@ -389,6 +398,7 @@ public class Reflections {
 	}
 	/**
 	 * Gets all of the values of any field or getter method that is annotated with a specific annotation.
+	 * 
 	 * @param target
 	 * @param annotation
 	 * @return A list of the found values.

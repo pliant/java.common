@@ -10,12 +10,13 @@ import javax.jms.Session;
 /**
  * Helper utility for working with JMS destinations.
  * 
- * @author Daniel Rugg, OBIS
+ * @author Daniel Rugg
  */
 public class Destinations {
 	
 	/**
 	 * Verifies that the list of queue names provided exists within a JMS server.  If they do not exist, they are created.
+	 * 
 	 * @param factory The JMS ConnectionFactory used to connect to the JMS server.
 	 * @param queueNames The list of queue names to validate against.
 	 * @throws JMSException
@@ -39,6 +40,7 @@ public class Destinations {
 
 	/**
 	 * Verifies that the list of queue names provided exists within a JMS server.  If they do not exist, they are created.
+	 * 
 	 * @param connection The JMS Connection used to connect to the JMS server.
 	 * @param queueNames The list of queue names to validate against.
 	 * @throws JMSException
@@ -59,6 +61,7 @@ public class Destinations {
 	}
 	/**
 	 * Verifies that the list of queue names provided exists within a JMS server.  If they do not exist, they are created.
+	 * 
 	 * @param session The JMS Session used to perform validation in.
 	 * @param queueNames The list of queue names to validate against.
 	 * @throws JMSException

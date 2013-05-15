@@ -12,6 +12,18 @@ import org.springframework.context.support.GenericApplicationContext;
 import org.springframework.test.context.ContextLoader;
 
 /**
+ * A context loader that can be used in test classes to load Spring annotated classes 
+ * off of the classpath. To utilize, add the following to the top of your TestClass, 
+ * replacing the locations value with the packages from which you want classes 
+ * loaded:
+ * 
+<pre>
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(
+	locations={"code.pliant.common"},
+	loader=AnnotationConfigContextLoader.class)}
+</pre>
+
  * 
  * 
  * @author Daniel Rugg
