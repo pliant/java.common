@@ -5,8 +5,9 @@ import java.io.OutputStream;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.spi.DataFormat;
-import code.pliant.common.domain.JAXBHelper;
 import org.springframework.stereotype.Component;
+
+import code.pliant.common.xml.bind.Bindings;
 
 
 /**
@@ -23,7 +24,7 @@ public class XJCDataFormat implements DataFormat {
 	 */
 	@Override
 	public void marshal(Exchange exchange, Object graph, OutputStream stream) throws Exception {
-		JAXBHelper.marshal(graph, stream);
+		Bindings.marshal(graph, stream);
 	}
 
 	/* (non-Javadoc)
@@ -31,7 +32,7 @@ public class XJCDataFormat implements DataFormat {
 	 */
 	@Override
 	public Object unmarshal(Exchange exchange, InputStream stream) throws Exception {
-		return JAXBHelper.unmarshal(stream);
+		return Bindings.unmarshal(stream);
 	}
 
 }

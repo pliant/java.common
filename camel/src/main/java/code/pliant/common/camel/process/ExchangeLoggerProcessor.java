@@ -11,7 +11,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import code.pliant.common.core.Strings;
-import code.pliant.common.domain.ValueObject;
 
 
 /**
@@ -76,9 +75,6 @@ public class ExchangeLoggerProcessor implements Processor {
 			out.append("[NULL]");
 		}
 		else if(body instanceof String){
-			out.append(body.toString());
-		}
-		else if(body instanceof ValueObject){
 			out.append(body.toString());
 		}
 		else if(body instanceof Exception){
