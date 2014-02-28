@@ -1,6 +1,3 @@
-/**
- * 
- */
 package code.pliant.common.xml.bind;
 
 import java.io.IOException;
@@ -40,7 +37,7 @@ import code.pliant.common.core.Strings;
 
 
 /**
- * Utility class to help with Domain operations.
+ * Utility class to help with JAXB Object to XML Binding operations.
  * 
  * @author Daniel Rugg
  */
@@ -165,12 +162,7 @@ public class Bindings {
 	 * @throws JAXBException If the XML is unable to be transformed to an instance of the class indicated.
 	 */
 	public static <T> T unmarshal(Class<T> klass, Source source) throws JAXBException{
-		try {
-			return getJAXBContext().createUnmarshaller().unmarshal(source, klass).getValue();
-		}
-		catch (JAXBException e) {
-			throw new JAXBException(e);
-		}
+		return getJAXBContext().createUnmarshaller().unmarshal(source, klass).getValue();
 	}
 
 
@@ -202,16 +194,11 @@ public class Bindings {
 	 */
 	@SuppressWarnings("rawtypes")
 	public static Object unmarshal(Source source) throws JAXBException{
-		try {
-			Object value = getJAXBContext().createUnmarshaller().unmarshal(source);
-			if(value instanceof JAXBElement){
-				value = ((JAXBElement)value).getValue();
-			}
-			return value;
+		Object value = getJAXBContext().createUnmarshaller().unmarshal(source);
+		if(value instanceof JAXBElement){
+			value = ((JAXBElement)value).getValue();
 		}
-		catch (JAXBException e) {
-			throw new JAXBException(e);
-		}
+		return value;
 	}
 	private static JAXBContext jaxbContext = null;
 
@@ -265,8 +252,9 @@ public class Bindings {
 	/**
 	 * Attempts to find all of the sun-jaxb.episode files to find the packages the VO's
 	 * @return A collection of paths to any sun-jaxb.episode on the classpath.
+	 * @throws JAXBException If processing the available META-INF/sun-jaxb.episode files fail.
 	 */
-	public static Collection<String> searchForJAXBPackages(){
+	public static Collection<String> searchForJAXBPackages() throws JAXBException{
 		ArrayList<String> paths = new ArrayList<String>();
 		try {
 			Enumeration<URL> resources = Bindings.class.getClassLoader().getResources("META-INF/sun-jaxb.episode");
@@ -292,12 +280,10 @@ public class Bindings {
 			}
 		}
 		catch (IOException e) {
-			// Unable to locate resources
-			e.printStackTrace();
+			throw new JAXBException("Failed to find and load the 'META-INF/sun-jaxb.episode' files from the available jars.", e);
 		}
 		catch (XPathExpressionException e) {
-			// Unable to create XPath Expression
-			e.printStackTrace();
+			throw new JAXBException("Failed to read the XML in the 'META-INF/sun-jaxb.episode' files from the available jars.", e);
 		}
 		finally{
 			
@@ -308,8 +294,9 @@ public class Bindings {
 	/**
 	 * Builds and returns a string containg all of the packages that have JAXB annotated classes in it.
 	 * @return A colon separated string of path URLs.
+	 * @throws JAXBException If processing the available META-INF/sun-jaxb.episode files fail.
 	 */
-	public static String getJAXBContextPath(){
+	public static String getJAXBContextPath() throws JAXBException{
 		if(jaxbPaths == null){
 			jaxbPaths = searchForJAXBPackages();
 		}
