@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <metadata modelVersion="1.1.0">
   <groupId>code.pliant.common</groupId>
-  <artifactId>test</artifactId>
+  <artifactId>core</artifactId>
   <version>0.1.0-SNAPSHOT</version>
   <versioning>
     <snapshot>
-      <timestamp>20140625.202928</timestamp>
+      <timestamp>20140625.202935</timestamp>
       <buildNumber>1</buildNumber>
     </snapshot>
-    <lastUpdated>20140625202928</lastUpdated>
+    <lastUpdated>20140625202935</lastUpdated>
     <snapshotVersions>
       <snapshotVersion>
         <extension>jar</extension>
-        <value>0.1.0-20140625.202928-1</value>
-        <updated>20140625202928</updated>
+        <value>0.1.0-20140625.202935-1</value>
+        <updated>20140625202935</updated>
       </snapshotVersion>
       <snapshotVersion>
         <extension>pom</extension>
-        <value>0.1.0-20140625.202928-1</value>
-        <updated>20140625202928</updated>
+        <value>0.1.0-20140625.202935-1</value>
+        <updated>20140625202935</updated>
       </snapshotVersion>
       <snapshotVersion>
         <classifier>sources</classifier>
         <extension>jar</extension>
-        <value>0.1.0-20140625.202928-1</value>
-        <updated>20140625202928</updated>
+        <value>0.1.0-20140625.202935-1</value>
+        <updated>20140625202935</updated>
       </snapshotVersion>
       <snapshotVersion>
         <classifier>javadoc</classifier>
         <extension>jar</extension>
-        <value>0.1.0-20140625.202928-1</value>
-        <updated>20140625202928</updated>
+        <value>0.1.0-20140625.202935-1</value>
+        <updated>20140625202935</updated>
       </snapshotVersion>
     </snapshotVersions>
   </versioning>
