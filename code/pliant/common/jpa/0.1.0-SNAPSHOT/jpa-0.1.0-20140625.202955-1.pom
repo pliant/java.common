@@ -10,10 +10,10 @@
 		<version>0.1.0-SNAPSHOT</version>
 	</parent>
 	
-	<artifactId>spring</artifactId>
+	<artifactId>jpa</artifactId>
 	
-	<name>Pliant Spring Project</name>
-	<description>Provides an extension to the Spring Framework for common patterns.</description>
+	<name>Pliant JPA Project</name>
+	<description>Provides base dependencies and utility classes for using JPA in your project.</description>
 	
 	<properties>
 		<spring.version>3.0.6.RELEASE</spring.version>
@@ -27,39 +27,20 @@
 			<version>0.1.0-SNAPSHOT</version>
 		</dependency>
 		
-		<!-- Spring Dependencies -->
 		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
-			<version>${spring.version}</version>
-			<exclusions>
-				<exclusion>
-					<groupId>commons-logging</groupId>
-					<artifactId>commons-logging</artifactId>
-				</exclusion>
-			</exclusions>
+			<groupId>code.pliant.common</groupId>
+			<artifactId>spring</artifactId>
+			<version>0.1.0-SNAPSHOT</version>
 		</dependency>
 		
-		<!-- Logging -->
+		 <!-- Hibernate is used as the provider, for now. -->
 		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>${slf4j.version}</version>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>3.4.0.GA</version>
+			<scope>provided</scope>
 		</dependency>
-		
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>jcl-over-slf4j</artifactId>
-			<version>${slf4j.version}</version>
-		</dependency>
-		
-		<!-- Required For Spring Configuration Annotation -->
-		<dependency>
-			<groupId>cglib</groupId>
-			<artifactId>cglib</artifactId>
-			<version>2.2</version>
-		</dependency>
-		
+
 		<!-- Testing -->
 		<dependency>
 			<groupId>code.pliant.common</groupId>
