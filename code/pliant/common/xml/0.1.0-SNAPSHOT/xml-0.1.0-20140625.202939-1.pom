@@ -1,5 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	
 	<modelVersion>4.0.0</modelVersion>
@@ -10,38 +9,37 @@
 		<version>0.1.0-SNAPSHOT</version>
 	</parent>
 	
-	<artifactId>core</artifactId>
+	<artifactId>xml</artifactId>
 	
-	<name>Pliant Core Project</name>
-	<description>Provides generalized utilities that are commonly used by most projects/libraries.</description>
+	<name>Pliant XML Project</name>
+	<description>Provides generalized utilities for working with XML.</description>
 	
 	<dependencies>
-		<!-- Property/Configuration Encryption -->
-		<dependency>
-			<groupId>org.jasypt</groupId>
-			<artifactId>jasypt</artifactId>
-			<version>1.7.1</version>
-		</dependency>
-		
-		<!-- Logging -->
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>${slf4j.version}</version>
-		</dependency>
-		
-		<!-- Testing -->
+		<!-- Pliant Dependancies -->
 		<dependency>
 			<groupId>code.pliant.common</groupId>
-			<artifactId>test</artifactId>
+			<artifactId>core</artifactId>
 			<version>0.1.0-SNAPSHOT</version>
-			<scope>test</scope>
+		</dependency>
+		
+		<!-- Date/Time Dependiencies -->
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>1.6.2</version>
+		</dependency>
+		
+		<!-- Apache FOP -->
+		<dependency>
+			<groupId>org.apache.xmlgraphics</groupId>
+			<artifactId>fop</artifactId>
+			<version>0.94</version>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 	
 	<build>
 		<plugins>
-			
 			<!-- Plugin For Building JARs. -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
