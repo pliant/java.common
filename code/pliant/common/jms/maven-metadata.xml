@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <metadata>
   <groupId>code.pliant.common</groupId>
-  <artifactId>camel</artifactId>
+  <artifactId>jms</artifactId>
   <versioning>
     <versions>
       <version>0.1.0-SNAPSHOT</version>
     </versions>
-    <lastUpdated>20140625203011</lastUpdated>
+    <lastUpdated>20140625203044</lastUpdated>
   </versioning>
 </metadata>
