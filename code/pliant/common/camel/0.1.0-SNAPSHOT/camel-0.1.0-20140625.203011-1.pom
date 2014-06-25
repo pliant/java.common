@@ -10,13 +10,13 @@
 		<version>0.1.0-SNAPSHOT</version>
 	</parent>
 	
-	<artifactId>jpa</artifactId>
+	<artifactId>camel</artifactId>
 	
-	<name>Pliant JPA Project</name>
-	<description>Provides base dependencies and utility classes for using JPA in your project.</description>
+	<name>Pliant Camel Project</name>
+	<description>Provides base dependencies and utility classes for using Apache Camel in your project.</description>
 	
 	<properties>
-		<spring.version>3.0.6.RELEASE</spring.version>
+		<camel.version>2.9.0</camel.version>
 	</properties>
 	
 	<dependencies>
@@ -33,15 +33,56 @@
 			<version>0.1.0-SNAPSHOT</version>
 		</dependency>
 		
-		 <!-- Hibernate is used as the provider, for now. -->
 		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-entitymanager</artifactId>
-			<version>3.4.0.GA</version>
+			<groupId>code.pliant.common</groupId>
+			<artifactId>xml</artifactId>
+			<version>0.1.0-SNAPSHOT</version>
+		</dependency>
+		
+		<!-- Camel Dependencies -->
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-core</artifactId>
+			<version>${camel.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-jaxb</artifactId>
+			<version>${camel.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.xml.bind</groupId>
+					<artifactId>jaxb-api</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.sun.xml.bind</groupId>
+					<artifactId>jaxb-impl</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-mail</artifactId>
+			<version>${camel.version}</version>
+		</dependency>
+		
+		<!-- Logging Dependencies -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.version}</version>
 			<scope>provided</scope>
 		</dependency>
-
-		<!-- Testing -->
+		
+		<!-- Test Dependencies -->
 		<dependency>
 			<groupId>code.pliant.common</groupId>
 			<artifactId>test</artifactId>
