@@ -71,6 +71,13 @@
 					</configuration>
 				</plugin>
 
+				<plugin>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>2.8.1</version>
+					<configuration>
+						<altDeploymentRepository>internal.repo::default::file://${project.build.directory}/mvn-repo</altDeploymentRepository>
+					</configuration>
+				</plugin>
 
 				<!-- Purpose: Plugin For Generating Report Sites. -->
 				<plugin>
@@ -303,4 +310,12 @@
 			<url>http:// repository.springsource.com/maven/bundles/external</url>
 		</repository>
 	</repositories>
+
+	<distributionManagement>
+		<repository>
+			<id>internal.repo</id>
+			<name>Temporary Staging Repository</name>
+			<url>file://${project.build.directory}/mvn-repo</url>
+		</repository>
+	</distributionManagement>
 </project>
