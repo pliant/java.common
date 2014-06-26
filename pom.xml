@@ -34,9 +34,11 @@
 	
 	<properties>
 		<java.version>1.6</java.version>
-		<spring.version>3.0.5.RELEASE</spring.version>
-		<camel.version>2.8.2</camel.version>
+		<spring.version>3.0.6.RELEASE</spring.version>
+		<cglib.version>2.2</cglib.version>
+		<camel.version>2.9.0</camel.version>
 		<slf4j.version>1.6.1</slf4j.version>
+		<jodatime.version>1.6.2</jodatime.version>
 		
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -80,7 +82,7 @@
 			<dependency>
 				<groupId>joda-time</groupId>
 				<artifactId>joda-time</artifactId>
-				<version>1.6.2</version>
+				<version>${jodatime.version}</version>
 			</dependency>
 		
 			<!-- Logging -->
@@ -94,6 +96,13 @@
 				<groupId>org.slf4j</groupId>
 				<artifactId>jcl-over-slf4j</artifactId>
 				<version>${slf4j.version}</version>
+			</dependency>
+			
+			<!--  -->
+			<dependency>
+				<groupId>cglib</groupId>
+				<artifactId>cglib</artifactId>
+				<version>${cglib.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

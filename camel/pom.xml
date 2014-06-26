@@ -13,10 +13,6 @@
 	<name>Pliant Camel Project</name>
 	<description>Provides base dependencies and utility classes for using Apache Camel in your project.</description>
 	
-	<properties>
-		<camel.version>2.9.0</camel.version>
-	</properties>
-	
 	<dependencies>
 		<!-- Pliant Dependencies -->
 		<dependency>

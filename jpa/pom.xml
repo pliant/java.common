@@ -13,10 +13,6 @@
 	<name>Pliant JPA Project</name>
 	<description>Provides base dependencies and utility classes for using JPA in your project.</description>
 	
-	<properties>
-		<spring.version>3.0.6.RELEASE</spring.version>
-	</properties>
-	
 	<dependencies>
 		<!-- Pliant Dependencies -->
 		<dependency>

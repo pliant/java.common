@@ -15,7 +15,6 @@
 	
 	<properties>
 		<activemq.version>5.5.0</activemq.version>
-		<camel.version>2.9.0</camel.version>
 	</properties>
 	
 	<dependencies>
@@ -47,6 +46,7 @@
 			<groupId>org.apache.activemq</groupId>
 			<artifactId>activemq-camel</artifactId>
 			<version>${activemq.version}</version>
+			<scope>provided</scope>
 			<exclusions>
 				<exclusion>
 					<artifactId>slf4j-api</artifactId>
@@ -63,6 +63,7 @@
 			<groupId>org.apache.activemq</groupId>
 			<artifactId>activemq-core</artifactId>
 			<version>${activemq.version}</version>
+			<scope>provided</scope>
 			<exclusions>
 				<exclusion>
 					<artifactId>slf4j-api</artifactId>

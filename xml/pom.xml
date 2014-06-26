@@ -13,6 +13,10 @@
 	<name>Pliant XML Project</name>
 	<description>Provides generalized utilities for working with XML.</description>
 	
+	<properties>
+		<fop.version>0.94</fop.version>
+	</properties>
+	
 	<dependencies>
 		<!-- Pliant Dependancies -->
 		<dependency>
@@ -30,7 +34,7 @@
 		<dependency>
 			<groupId>org.apache.xmlgraphics</groupId>
 			<artifactId>fop</artifactId>
-			<version>0.94</version>
+			<version>${fop.version}</version>
 			<scope>provided</scope>
 			<exclusions>
 				<exclusion>
