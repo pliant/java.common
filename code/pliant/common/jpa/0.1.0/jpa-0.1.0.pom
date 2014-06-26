@@ -1,0 +1,72 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	
+	<modelVersion>4.0.0</modelVersion>
+	
+	<parent>
+		<groupId>code.pliant.common</groupId>
+		<artifactId>parent</artifactId>
+		<version>0.1.0</version>
+	</parent>
+	
+	<artifactId>jpa</artifactId>
+	
+	<name>Pliant JPA Project</name>
+	<description>Provides base dependencies and utility classes for using JPA in your project.</description>
+	
+	<properties>
+		<spring.version>3.0.6.RELEASE</spring.version>
+	</properties>
+	
+	<dependencies>
+		<!-- Pliant Dependencies -->
+		<dependency>
+			<groupId>code.pliant.common</groupId>
+			<artifactId>core</artifactId>
+			<version>0.1.0</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>code.pliant.common</groupId>
+			<artifactId>spring</artifactId>
+			<version>0.1.0</version>
+		</dependency>
+		
+		 <!-- Hibernate is used as the provider, for now. -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>3.4.0.GA</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- Testing -->
+		<dependency>
+			<groupId>code.pliant.common</groupId>
+			<artifactId>test</artifactId>
+			<version>0.1.0</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+	
+	<build>
+		<plugins>
+			<!-- Plugin For Building JARs. -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+			</plugin>
+
+			<!-- Creates the sources jar. -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+			</plugin>
+
+			<!-- Creates the javadocs jar. -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+</project>
