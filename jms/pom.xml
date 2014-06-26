@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>code.pliant.common</groupId>
 		<artifactId>parent</artifactId>
-		<version>0.1.0</version>
+		<version>0.2.0-SNAPSHOT</version>
 	</parent>
 	
 	<artifactId>jms</artifactId>
@@ -23,13 +23,13 @@
 		<dependency>
 			<groupId>code.pliant.common</groupId>
 			<artifactId>spring</artifactId>
-			<version>0.1.0</version>
+			<version>0.2.0-SNAPSHOT</version>
 		</dependency>
 		
 		<dependency>
 			<groupId>code.pliant.common</groupId>
 			<artifactId>camel</artifactId>
-			<version>0.1.0</version>
+			<version>0.2.0-SNAPSHOT</version>
 		</dependency>
 		
 		<!-- Camel/ActiveMQ Dependencies -->
@@ -81,7 +81,7 @@
 		<dependency>
 			<groupId>code.pliant.common</groupId>
 			<artifactId>test</artifactId>
-			<version>0.1.0</version>
+			<version>0.2.0-SNAPSHOT</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
