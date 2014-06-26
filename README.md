@@ -4,28 +4,28 @@ Java Common is a collection of lightweight modules containing reusable code for 
 has been reused in some form or another in multiple projects, and it made sense to just package them up and 
 reuse by reference.
 
-#### [Test](tree/master/test)
+#### [Test](./test)
 A collection of utilities and preselected dependencies to use for testing.
 
-#### [XML](tree/master/xml)
+#### [XML](./xml)
 Common utilities for working with XML and JAXB modelling.
 
-#### [Core](tree/master/core)
+#### [Core](./core)
 Utilities to resolve common issues when working with Java.
 
-#### [Spring](tree/master/spring)
+#### [Spring](./spring)
 Some custom classes for working with Spring.  Currently targets release 3.0.5.
 
-#### [Maven](tree/master/maven)
+#### [Maven](./maven)
 Support utilities utilites and classes for building Maven plugins.
 
-#### [JMS](tree/master/jms)
+#### [JMS](./jms)
 Support utilities utilites and classes for working with JMS.
 
-#### [Camel](tree/master/camel)
+#### [Camel](./camel)
 Support utilities and classes for working with [Apache Camel](http://camel.apache.org/)
 
-#### [JPA](tree/master/jpa)
+#### [JPA](./jpa)
 Support utilities utilites and classes for working with JPA.
 
 ## Maven Integration
